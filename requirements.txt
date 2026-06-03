@@ -1,0 +1,7 @@
+# Usado nos scripts de processamento de palavras
+aiohttp
+pandas
+ruff
+
+# Usado no game
+pygame

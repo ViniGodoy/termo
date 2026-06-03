@@ -1,0 +1,244 @@
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".ipynb_checkpoints",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pyenv",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
+
+# Same as Black.
+line-length = 88
+indent-width = 4
+
+# Assume Python 3.13.
+target-version = "py313"
+
+[lint]
+# Enable a broad, modern, safety-oriented rule set:
+#
+# Core correctness/style:
+#   F     Pyflakes
+#   E/W   pycodestyle errors/warnings
+#   I     isort
+#   N     pep8-naming
+#
+# Modernization and simplification:
+#   UP    pyupgrade
+#   SIM   flake8-simplify
+#   C4    flake8-comprehensions
+#   PIE   flake8-pie
+#   RUF   Ruff-specific rules
+#
+# Typed Python:
+#   ANN   flake8-annotations
+#   FA    flake8-future-annotations
+#   PYI   flake8-pyi
+#   TCH   flake8-type-checking
+#
+# Bug prevention and safer code:
+#   B     flake8-bugbear
+#   A     flake8-builtins
+#   ARG   flake8-unused-arguments
+#   RET   flake8-return
+#   SLF   flake8-self
+#   PLE   Pylint errors
+#   PLW   Pylint warnings
+#   PLR   Pylint refactor checks
+#   TRY   tryceratops
+#   EM    flake8-errmsg
+#   BLE   flake8-blind-except
+#
+# Security and risky patterns:
+#   S     flake8-bandit
+#
+# Quality and consistency:
+#   C90   mccabe complexity
+#   D     pydocstyle
+#   Q     flake8-quotes
+#   COM   flake8-commas
+#   TID   flake8-tidy-imports
+#   PTH   flake8-use-pathlib
+#   DTZ   flake8-datetimez
+#   LOG   flake8-logging
+#   G     flake8-logging-format
+#   PERF  Perflint
+#   FBT   flake8-boolean-trap
+#   ERA   eradicate commented-out code
+#   YTT   flake8-2020
+select = [
+    "A",
+    "ANN",
+    "ARG",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "COM",
+    "D",
+    "DTZ",
+    "E",
+    "EM",
+    "ERA",
+    "F",
+    "FA",
+    "FBT",
+    "G",
+    "I",
+    "LOG",
+    "N",
+    "PERF",
+    "PIE",
+    "PLE",
+    "PLR",
+    "PLW",
+    "PTH",
+    "PYI",
+    "Q",
+    "RET",
+    "RUF",
+    "S",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+]
+
+# Keep this strict by default. Add narrow exceptions here only when the project
+# has an intentional, documented reason.
+ignore = [
+    "I002",
+    # Let the formatter handle line wrapping.
+    "E501",
+
+    # Avoid noisy conflicts with Ruff's formatter.
+    "COM812",
+
+    # Allow missing docstrings in small scripts while still enforcing docstring
+    # quality when docstrings are present.
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "D104",
+    "D105",
+    "D106",
+    "D107",
+
+    # Allow boolean positional arguments in calls; still warn on boolean-trap
+    # function definitions.
+    "FBT003",
+]
+
+# Allow fix for all enabled rules when `--fix` is provided.
+fixable = ["ALL"]
+unfixable = [
+    # Avoid unsafe removal of intentionally retained commented-out code.
+    "ERA001",
+]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[lint.flake8-annotations]
+# Require annotations for public APIs, but do not force `self` and `cls`.
+mypy-init-return = true
+suppress-dummy-args = true
+allow-star-arg-any = false
+
+[lint.flake8-bandit]
+# Treat security checks seriously, while avoiding noise from assert usage in
+# ordinary code. If tests are added later, prefer per-file ignores for tests.
+check-typed-exception = true
+
+[lint.flake8-bugbear]
+# Encourage explicit immutable defaults and modern practices.
+extend-immutable-calls = []
+
+[lint.flake8-quotes]
+docstring-quotes = "double"
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["termo"]
+required-imports = ["from __future__ import annotations"]
+
+[lint.mccabe]
+max-complexity = 10
+
+[lint.pep8-naming]
+classmethod-decorators = [
+    "classmethod",
+]
+
+[lint.pydocstyle]
+convention = "google"
+
+[lint.pylint]
+max-args = 5
+max-branches = 12
+max-returns = 6
+max-statements = 50
+
+[lint.pyupgrade]
+keep-runtime-typing = false
+
+[lint.per-file-ignores]
+# Tests often intentionally use asserts, fixtures, magic values, and relaxed
+# annotation/docstring requirements.
+"tests/**/*.py" = [
+    "ANN",
+    "ARG",
+    "D",
+    "FBT",
+    "PLR2004",
+    "S101",
+    "SLF001",
+]
+
+[format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings.
+docstring-code-format = true
+
+# Set the line length limit used when formatting code snippets in docstrings.
+docstring-code-line-length = "dynamic"
