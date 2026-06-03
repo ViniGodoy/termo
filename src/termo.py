@@ -3,7 +3,6 @@ from pygame import Vector2
 
 from game.constants import BG_COLOR, SCREEN_SIZE
 from game.keyboard import Keyboard
-from game.letter import Letter
 from game.util import write
 from game.word import Word
 
@@ -13,18 +12,18 @@ screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("Termo")
 clock = pygame.time.Clock()
 running = True
-dt= 0
+dt = 0
 
 x = 350
-palavra1 = Word(Vector2(x, 20+65*1))
-palavra2 = Word(Vector2(x, 20+65*2))
-palavra3 = Word(Vector2(x, 20+65*3))
-palavra4 = Word(Vector2(x, 20+65*4))
-palavra5 = Word(Vector2(x, 20+65*5))
-palavra6 = Word(Vector2(x, 20+65*6))
+palavra1 = Word(Vector2(x, 20 + 65 * 1))
+palavra2 = Word(Vector2(x, 20 + 65 * 2))
+palavra3 = Word(Vector2(x, 20 + 65 * 3))
+palavra4 = Word(Vector2(x, 20 + 65 * 4))
+palavra5 = Word(Vector2(x, 20 + 65 * 5))
+palavra6 = Word(Vector2(x, 20 + 65 * 6))
 palavra1.set_typing()
 
-keyboard = Keyboard(Vector2(150, 20+65*8))
+keyboard = Keyboard(Vector2(150, 20 + 65 * 8))
 keyboard.reveal("praça", "arcas")
 keyboard.reveal("termo", "praça")
 
@@ -36,13 +35,13 @@ while running:
             running = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                palavra1.type('a')
+                palavra1.type("a")
             elif event.key == pygame.K_w:
                 palavra1.backspace()
 
     # fill the screen with a color to wipe away anything from last frame
     screen.fill(BG_COLOR)
-    write(screen,Vector2(0,10), "TERMO", "WHITE", Vector2(SCREEN_SIZE[0], 65))
+    write(screen, Vector2(0, 10), "TERMO", "WHITE", Vector2(SCREEN_SIZE[0], 65))
     palavra1.paint(screen)
     palavra2.paint(screen)
     palavra3.paint(screen)

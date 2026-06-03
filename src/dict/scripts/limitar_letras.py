@@ -22,9 +22,7 @@ def limitar_5_letras() -> None:
 
         # Remove espaços em branco nas pontas, filtra por 5 letras e converte para minúsculo
         palavras_filtradas = [
-            linha.strip().lower()
-            for linha in linhas
-            if len(linha.strip()) == WORD_SIZE
+            linha.strip().lower() for linha in linhas if len(linha.strip()) == WORD_SIZE
         ]
 
         # Sobrescreve o arquivo original
