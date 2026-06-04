@@ -37,7 +37,7 @@ class WordList:
         return random.choice(self._commons[3 * q :])
 
     def find(self, word: str) -> str | None:
-        for w in self._commons:
+        for w in self._words:
             if strip_accents(w) == word:
                 return w
         return None

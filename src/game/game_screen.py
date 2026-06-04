@@ -48,6 +48,8 @@ class GameScreen:
     def update(self, dt: float) -> None:
         for word in self._words:
             word.update(dt)
+        self._keyboard.update(dt)
+        self._stats.update(dt)
 
     def on_key_down(self, evt: Event) -> None:
         curr_word = self._words[self._attempt]

@@ -39,5 +39,6 @@ while running:
     # dt is delta time in seconds since last frame, used for framerate-
     # independent physics.
     dt = clock.tick(60) / 1000
+    game_screen.update(dt)
 
 pygame.quit()
