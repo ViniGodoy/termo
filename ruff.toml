@@ -133,14 +133,9 @@ select = [
 # has an intentional, documented reason.
 ignore = [
     "I002",
-    # Let the formatter handle line wrapping.
+    "S311",
     "E501",
-
-    # Avoid noisy conflicts with Ruff's formatter.
     "COM812",
-
-    # Allow missing docstrings in small scripts while still enforcing docstring
-    # quality when docstrings are present.
     "D100",
     "D101",
     "D102",
@@ -149,12 +144,9 @@ ignore = [
     "D105",
     "D106",
     "D107",
-
-    # Allow boolean positional arguments in calls; still warn on boolean-trap
-    # function definitions.
     "FBT003",
+    "PLR2004",
 ]
-
 # Allow fix for all enabled rules when `--fix` is provided.
 fixable = ["ALL"]
 unfixable = [

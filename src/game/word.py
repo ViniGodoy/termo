@@ -77,4 +77,5 @@ class Word:
             self._letters[i].letter = word[i]
 
     def update(self, dt: float) -> None:
-        pass
+        for letter in self._letters:
+            letter.update(dt)

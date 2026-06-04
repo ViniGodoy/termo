@@ -4,4 +4,4 @@ pandas
 ruff
 
 # Usado no game
-pygame
+pygame-ce

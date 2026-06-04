@@ -3,7 +3,8 @@ import unicodedata
 from pygame import Rect, Surface, Vector2
 from pygame.font import Font, SysFont
 
-_FONT_ARIAL_B: Font | None = None
+FONT_BIG: Font | None = None
+FONT_SMALL: Font | None = None
 
 
 def write(
@@ -13,11 +14,32 @@ def write(
     color: str | tuple[int, int, int] = "WHITE",
     dimensions: Vector2 | None = None,
 ) -> None:
-    global _FONT_ARIAL_B  # noqa: PLW0603
-    if _FONT_ARIAL_B is None:
-        _FONT_ARIAL_B = SysFont("arial", 40, bold=True)
+    global FONT_BIG  # noqa: PLW0603
+    if FONT_BIG is None:
+        FONT_BIG = SysFont("arial", 40, bold=True)
 
-    text_surface = _FONT_ARIAL_B.render(text, True, color)
+    text_surface = FONT_BIG.render(text, True, color)
+    if dimensions is not None:
+        box_rect = Rect(pos.x, pos.y, dimensions.x, dimensions.y)
+        text_rect = text_surface.get_rect(center=box_rect.center)
+        canvas.blit(text_surface, text_rect)
+    else:
+        canvas.blit(text_surface, pos)
+
+
+def write_small(
+    canvas: Surface,
+    pos: Vector2,
+    text: str,
+    color: str | tuple[int, int, int] = "WHITE",
+    dimensions: Vector2 | None = None,
+) -> None:
+    global FONT_SMALL  # noqa: PLW0603
+
+    if FONT_SMALL is None:
+        FONT_SMALL = SysFont("arial", 20, bold=True)
+
+    text_surface = FONT_SMALL.render(text, True, color)
     if dimensions is not None:
         box_rect = Rect(pos.x, pos.y, dimensions.x, dimensions.y)
         text_rect = text_surface.get_rect(center=box_rect.center)
