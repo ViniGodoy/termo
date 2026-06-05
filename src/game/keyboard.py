@@ -36,4 +36,5 @@ class Keyboard:
                 self._keys[ch].state = LetterStates.DISCARDED
 
     def update(self, dt: float) -> None:
-        pass
+        for key in self._keys.values():
+            key.update(dt)

@@ -3,7 +3,7 @@ from __future__ import annotations
 import pygame
 
 from dict.wordlist import WordList
-from game.constants import BG_COLOR, SCREEN_SIZE
+from game.constants import BG_PRIMARY, SCREEN_SIZE
 from game.game_screen import GameScreen
 
 # pygame setup
@@ -27,7 +27,7 @@ while running:
             game_screen.on_key_down(event)
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill(BG_COLOR)
+    screen.fill(BG_PRIMARY)
     game_screen.paint(screen)
 
     keys = pygame.key.get_pressed()

@@ -1,9 +1,18 @@
 from enum import IntEnum, auto
 
-from pygame import Surface, Vector2
+from pygame import Color, Surface, Vector2
 import pygame.draw
 
-from game.constants import BG_COLOR
+from game.constants import (
+    BG_PRIMARY,
+    BG_SECONDARY,
+    BG_SLOT,
+    BG_SUCCESS,
+    BG_WRONG,
+    FG_CURSOR_BORDER,
+    FG_KEY_BORDER,
+    FG_PRIMARY,
+)
 from game.util import write
 
 
@@ -18,14 +27,14 @@ class LetterStates(IntEnum):
     DISCARDED = auto()
 
 
-_LetterColors: dict[int, tuple[int, int, int]] = {
-    LetterStates.SLOT: (97, 84, 88),
-    LetterStates.KEY: (76, 68, 70),
-    LetterStates.CURSOR: (76 * 2, 68 * 2, 70 * 2),
-    LetterStates.MISPLACED: (211, 173, 105),
-    LetterStates.CORRECT: (58, 163, 148),
-    LetterStates.WRONG: (0, 0, 0),
-    LetterStates.DISCARDED: (97, 84, 88),
+_LetterColors: dict[int, Color] = {
+    LetterStates.SLOT: BG_SLOT,
+    LetterStates.KEY: FG_KEY_BORDER,
+    LetterStates.CURSOR: FG_CURSOR_BORDER,
+    LetterStates.MISPLACED: BG_SECONDARY,
+    LetterStates.CORRECT: BG_SUCCESS,
+    LetterStates.WRONG: BG_WRONG,
+    LetterStates.DISCARDED: BG_SLOT,
 }
 
 _BorderStates = [LetterStates.KEY, LetterStates.CURSOR]
@@ -33,21 +42,43 @@ _BorderStates = [LetterStates.KEY, LetterStates.CURSOR]
 
 class Letter:
     def __init__(self, pos: Vector2, letter: str = "") -> None:
-        self.state = LetterStates.SLOT if not letter else LetterStates.KEY
+        self._state = LetterStates.SLOT if not letter else LetterStates.KEY
+        self._prev_state = self._state
         self.pos = pos
         self.letter = letter
+        self._s = 0.0
+
+    @property
+    def state(self) -> LetterStates:
+        return self._state
+
+    @state.setter
+    def state(self, value: LetterStates) -> None:
+        self._state = value
+        self._s = 0
+
+    @property
+    def dimensions(self) -> Vector2:
+        return Vector2(60, 60)
 
     def paint(self, canvas: Surface) -> None:
-        color = _LetterColors[self.state]
-        width = 3 if self.state in _BorderStates else 0
+        lerp_time = min(self._s, 1)
+        cur_color = _LetterColors[self._state]
+        prev_color = _LetterColors[self._prev_state]
+        color = prev_color.lerp(cur_color, lerp_time)
+        width = 3 if self._state in _BorderStates else 0
         pygame.draw.rect(
             surface=canvas,
-            color=color,
+            color=cur_color if self._state in _BorderStates else color,
             rect=pygame.Rect(self.pos, self.dimensions),
             border_radius=15,
             width=width,
         )
-        font_color = BG_COLOR if self.state == LetterStates.DISCARDED else "WHITE"
+        font_color = (
+            FG_PRIMARY.lerp(BG_PRIMARY, lerp_time)
+            if self._state == LetterStates.DISCARDED
+            else FG_PRIMARY
+        )
         if self.letter:
             write(
                 canvas=canvas,
@@ -57,9 +88,5 @@ class Letter:
                 dimensions=self.dimensions,
             )
 
-    @property
-    def dimensions(self) -> Vector2:
-        return Vector2(60, 60)
-
     def update(self, dt: float) -> None:
-        pass
+        self._s += dt

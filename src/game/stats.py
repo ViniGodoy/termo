@@ -1,18 +1,30 @@
-from pygame import Color, Rect, Surface, Vector2
+from pygame import Rect, Surface, Vector2
 import pygame.draw
 from pygame.math import lerp
 
-from game.constants import ATTEMPTS
+from game.constants import (
+    ATTEMPTS,
+    BG_DARK,
+    BG_FAIL,
+    BG_SECONDARY,
+    BG_SHADOW,
+    BG_SUCCESS,
+    FG_SECONDARY,
+)
 from game.util import write_small
 
 
 class Stats:
-    def __init__(self, pos: Vector2):
+    def __init__(self, pos: Vector2, stats: list[int]):
         self._pos = pos
-        self._stats = [0, 0, 0, 0, 0, 0, 0]
+        self._stats = stats
         self._prev_stats = [0, 0, 0, 0, 0, 0, 0]
         self._updated = -1
         self._s = 0.0
+
+    @property
+    def stats(self) -> list[int]:
+        return self._stats.copy()
 
     def count(self, attempt: int) -> None:
         self._prev_stats = self._stats.copy()
@@ -21,27 +33,42 @@ class Stats:
         self._s = 0.0
 
     def paint(self, canvas: Surface) -> None:
-        lerp_time = min(self._s / 2, 1)  # 2 secs
+        lerp_time = min(self._s / 1.2, 1)  # 2 secs
         # background
         pygame.draw.rect(
             surface=canvas,
-            color=(29, 21, 22),
+            color=BG_SHADOW,
             rect=Rect(self._pos.x + 5, self._pos.y + 5, 300, 300),
+            border_radius=10,
         )
         pygame.draw.rect(
             surface=canvas,
-            color=(49, 43, 45),
+            color=BG_DARK,
             rect=Rect(self._pos.x, self._pos.y, 300, 300),
+            border_radius=10,
         )
 
         # counts
-        games = sum(self._stats)
-        success_rate = 0 if games == 0 else (games - self._stats[-1]) * 100 / games
+        curr_games = sum(self._stats)
+        prev_games = sum(self._prev_stats)
+
+        curr_success_rate = (
+            0 if curr_games == 0 else (curr_games - self._stats[-1]) * 100 / curr_games
+        )
+        prev_sucess_rate = (
+            0
+            if prev_games == 0
+            else (prev_games - self._prev_stats[-1]) * 100 / prev_games
+        )
+
+        games = lerp(prev_games, curr_games, lerp_time)
+        success_rate = lerp(prev_sucess_rate, curr_success_rate, lerp_time)
+
         write_small(
             canvas=canvas,
             pos=self._pos,
-            text=f"Partidas: {games:3}  Sucesso: {success_rate:5.1f}%",
-            color=(211, 173, 105),
+            text=f"Partidas: {games:3.0f}  Sucesso: {success_rate:5.1f}%",
+            color=FG_SECONDARY,
             dimensions=Vector2(300, 40),
         )
 
@@ -59,8 +86,8 @@ class Stats:
                 text=f"{'X' if i == ATTEMPTS else i + 1}",
             )
 
-        if self._updated != -1:
-            top_most = max(self._stats)
+        top_most = max(self._stats)
+        if top_most > 0:
             prev_top_most = max(self._prev_stats)
             for i in range(len(self._stats)):
                 max_bar_height = 150
@@ -74,13 +101,9 @@ class Stats:
                 bar_pos = self._pos + Vector2(
                     15 + 40 * i, 250 - max_bar_height * percent
                 )
-                bar_color = Color(211, 173, 105)
+                bar_color = BG_SECONDARY
                 if i == self._updated:
-                    bright_color = (
-                        Color(58, 163, 148)
-                        if self._updated != ATTEMPTS
-                        else Color(163, 60, 58)
-                    )
+                    bright_color = BG_SUCCESS if self._updated != ATTEMPTS else BG_FAIL
                     bar_color = bright_color.lerp(bar_color, lerp_time)
                 pygame.draw.rect(
                     surface=canvas,

@@ -1,4 +1,22 @@
+from pygame import Color
+
 WORD_SIZE = 5
 SCREEN_SIZE = (1024, 768)
-BG_COLOR = (110, 92, 98)
+
 ATTEMPTS = 6
+
+FG_PRIMARY = Color(255, 255, 255)
+BG_PRIMARY = Color(110, 92, 98)
+
+FG_SECONDARY = Color(211, 173, 105)
+BG_SECONDARY = FG_SECONDARY
+
+BG_DARK = Color(49, 43, 45)
+BG_SHADOW = Color(25, 21, 22)
+BG_SUCCESS = Color(58, 163, 148)
+BG_FAIL = Color(163, 60, 58)
+BG_SLOT = Color(97, 84, 88)
+BG_WRONG = Color(0, 0, 0)
+
+FG_KEY_BORDER = Color(76, 68, 70)
+FG_CURSOR_BORDER = Color(76 * 2, 68 * 2, 70 * 2)
