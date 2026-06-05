@@ -69,14 +69,17 @@ no console.
 
 ## Dicionário
 
-As palavras permitidas estão no arquivo `lexico.txt` (baseado no mesmo [léxico do jogo original](https://github.com/fserb/pt-br)). 
-Entretanto, as palavras sorteáveis encontram-se no arquivo `palavras.csv`. 
+As palavras permitidas estão no arquivo [lexico.txt](src/dict/lexico.txt) - 
+baseado no mesmo [léxico do jogo original](https://github.com/fserb/pt-br). 
+As palavras sorteáveis encontram-se no arquivo [palavras.csv](src/dict/palavras.csv). 
 Diferente do game original, nomes de pessoas e países também estão presentes no dicionário.
 
-O game nunca sorteará palavras presentes no arquivo `negativas.txt`.
+O game nunca sorteará palavras presentes no arquivo [negativas.txt](src/dict/negativas.txt).
 
-Os scripts presentes na pasta `scripts` do dicionário foram usados para gerar e higienizar 
-esses arquivos.
+Os scripts presentes na pasta [scripts](src/dict/scripts) do dicionário foram usados para gerar e higienizar 
+esses arquivos. Destaque para o arquivo [word_crawler.py](src/dict/scripts/word_crawler.py) que indexa todas
+as palavras de 5 letras presentes nos [Artigos Destacados da Wikipedia](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Artigos_destacados) 
+para gerar o arquivo [comuns.csv](src/dict/comuns.csv). Após ser filtrado pelo léxico, esse arquivo se torna o arquivo final de palavras.
 
 
 ### Divita-se! :)
