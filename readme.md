@@ -47,7 +47,8 @@ pip install -r requirements.txt
 5. Execute o jogo
 
 ```bash
-python -m src.termo
+cd src
+python termo.py
 ```
 
 ## Cheat mode
