@@ -50,7 +50,7 @@ python -m src.termo
 
 ## Cheat mode
 
-Para ativar o cheat mode, rode o jogo uma vez. Adicione ao arquivo game.ini a chave
+Para ativar o cheat mode, rode o jogo uma vez. Adicione ao arquivo `game.ini` a chave
 `CHEAT=TRUE`
 
 As letras corretas já ficarão pintadas em verde. A palavra correta será impressa no console.

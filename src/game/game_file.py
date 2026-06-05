@@ -14,6 +14,7 @@ class GameFile:
 
     def load(self) -> Self:
         if not _INI_FILE.exists():
+            self.save()
             return self
 
         try:
