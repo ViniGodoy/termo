@@ -1,6 +1,7 @@
 # Termo
 
-Clone do jogo termo.ooo desenvolvido pelo aluno Vinícius G. Mendonça para disciplina de Python Scripting da 
+Clone do jogo [termo.ooo](https://term.ooo/) (versão em português do [Wordle](https://www.nytimes.com/games/wordle/index.html)) desenvolvido 
+pelo aluno Vinícius G. Mendonça para disciplina de Python Scripting da 
 especialização em Engenharia de Serviços e Sistemas de Cloud Computing, turma de 2026.
 
 <img width="75%" height="75%" alt="image" src="https://github.com/user-attachments/assets/ce2982d0-4f8b-41e2-baa7-abfc73eebd01" />
