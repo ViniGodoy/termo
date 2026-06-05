@@ -24,17 +24,15 @@ class WordList:
         self._words = _loadfile("lexico.txt")
 
     def random(self) -> str:
+        q = len(self._commons) // 4
         chance = random.randint(0, 100)
-        n = len(self._commons)
-        q = n // 4
-
-        if chance < 50:
+        if chance < 50:  # 50% chance
             return random.choice(self._commons[:q])
-        if chance < 75:
+        if chance < 80:  # 30% chance
             return random.choice(self._commons[q : 2 * q])
-        if chance < 95:
+        if chance < 95:  # 15% chance
             return random.choice(self._commons[2 * q : 3 * q])
-        return random.choice(self._commons[3 * q :])
+        return random.choice(self._commons[3 * q :])  # 5% chance
 
     def find(self, word: str) -> str | None:
         for w in self._words:
