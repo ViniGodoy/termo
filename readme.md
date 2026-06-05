@@ -4,7 +4,7 @@ Clone do jogo [termo.ooo](https://term.ooo/) (versão em português do [Wordle](
 pelo aluno Vinícius G. Mendonça para disciplina de Python Scripting da 
 especialização em Engenharia de Serviços e Sistemas de Cloud Computing, turma de 2026.
 
-<img width="75%" height="75%" alt="image" src="https://github.com/user-attachments/assets/ce2982d0-4f8b-41e2-baa7-abfc73eebd01" />
+[<img width="75%" height="75%" alt="image" src="https://github.com/user-attachments/assets/ce2982d0-4f8b-41e2-baa7-abfc73eebd01" />](https://youtu.be/F5sfoBT2qmE)
 
 
 Vídeo explicativo: https://youtu.be/F5sfoBT2qmE
