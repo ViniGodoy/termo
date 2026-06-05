@@ -3,6 +3,8 @@
 Clone do jogo termo.ooo desenvolvido pelo aluno Vinícius G. Mendonça para disciplina de Python Scripting da 
 especialização em Engenharia de Serviços e Sistemas de Cloud Computing, turma de 2026.
 
+Vídeo explicativo: https://youtu.be/F5sfoBT2qmE
+
 ## Instruções
 
 Descubra a palavra oculta em 6 tentativas. A cada tentativa o game te mostrará
