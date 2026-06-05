@@ -47,3 +47,19 @@ pip install -r requirements.txt
 ```bash
 python -m src.termo
 ```
+
+## Cheat mode
+
+Para ativar o cheat mode, rode o jogo uma vez. Adicione ao arquivo game.ini a chave
+`CHEAT=TRUE`
+
+As letras corretas já ficarão pintadas em verde. A palavra correta será impressa no console.
+
+## Dicionário
+
+As palavras permitidas estão no arquivo `lexico.txt`. 
+Entretanto, as palavras sorteadas encontram-se no arquivo `palavras.csv`.
+
+O game nunca sorteará palavras presentes no arquivo `negativas.txt`.
+
+Os scripts presentes na pasta `scripts` do dicionário foram usados para gerar esses arquivos.
