@@ -69,7 +69,7 @@ no console.
 
 ## Dicionário
 
-As palavras permitidas estão no arquivo `lexico.txt`. 
+As palavras permitidas estão no arquivo `lexico.txt` (baseado no mesmo [léxico do jogo original](https://github.com/fserb/pt-br)). 
 Entretanto, as palavras sorteáveis encontram-se no arquivo `palavras.csv`.
 
 O game nunca sorteará palavras presentes no arquivo `negativas.txt`.
