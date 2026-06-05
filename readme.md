@@ -6,7 +6,6 @@ especialização em Engenharia de Serviços e Sistemas de Cloud Computing, turma
 
 [<img width="75%" height="75%" alt="image" src="https://github.com/user-attachments/assets/ce2982d0-4f8b-41e2-baa7-abfc73eebd01" />](https://youtu.be/F5sfoBT2qmE)
 
-
 Vídeo explicativo: https://youtu.be/F5sfoBT2qmE
 
 ## Instruções
@@ -81,5 +80,16 @@ esses arquivos. Destaque para o arquivo [word_crawler.py](src/dict/scripts/word_
 as palavras de 5 letras presentes nos [Artigos Destacados da Wikipedia](https://pt.wikipedia.org/wiki/Wikip%C3%A9dia:Artigos_destacados) 
 para gerar o arquivo [comuns.csv](src/dict/comuns.csv). Após ser filtrado pelo léxico, esse arquivo se torna o arquivo final de palavras.
 
+## Ambiente e dependências
 
-### Divita-se! :)
+Feito para **Python 3.14**
+
+### Game
+* pyGame CE 2.5.7
+
+### Scripts do dicionário
+* pandas 3.0.3 
+* numPy 2.4.6
+* aiohttp 3.14.0
+
+# Divita-se! :)

@@ -1,7 +1,10 @@
-# Usado nos scripts de processamento de palavras
-aiohttp
-pandas
-ruff
-
 # Usado no game
-pygame-ce
+pygame-ce==2.5.7
+
+# Usado nos scripts do dicionário
+numpy==2.4.6
+pandas==3.0.3
+aiohttp==3.14.0
+
+# Linter e formatter
+ruff
