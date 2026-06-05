@@ -3,6 +3,9 @@
 Clone do jogo termo.ooo desenvolvido pelo aluno Vinícius G. Mendonça para disciplina de Python Scripting da 
 especialização em Engenharia de Serviços e Sistemas de Cloud Computing, turma de 2026.
 
+<img width="75%" height="75%" alt="image" src="https://github.com/user-attachments/assets/ce2982d0-4f8b-41e2-baa7-abfc73eebd01" />
+
+
 Vídeo explicativo: https://youtu.be/F5sfoBT2qmE
 
 ## Instruções
@@ -53,16 +56,25 @@ python termo.py
 
 ## Cheat mode
 
-Para ativar o cheat mode, rode o jogo uma vez. Adicione ao arquivo `game.ini` a chave
+Para ativar o cheat mode, rode o jogo uma vez para que o arquivo `game.ini` seja gerado.
+Adicione a esse arquivo a chave:
 `CHEAT=TRUE`
 
-As letras corretas já ficarão pintadas em verde. A palavra correta será impressa no console.
+Reinicie o jogo.
+
+No modo cheat, as letras corretas já ficarão pintadas em verde no teclado - o que deixa o jogo 
+consideravelmente mais fácil. Se você quiser acertar de primeira, a palavra correta será impressa 
+no console.
 
 ## Dicionário
 
 As palavras permitidas estão no arquivo `lexico.txt`. 
-Entretanto, as palavras sorteadas encontram-se no arquivo `palavras.csv`.
+Entretanto, as palavras sorteáveis encontram-se no arquivo `palavras.csv`.
 
 O game nunca sorteará palavras presentes no arquivo `negativas.txt`.
 
-Os scripts presentes na pasta `scripts` do dicionário foram usados para gerar esses arquivos.
+Os scripts presentes na pasta `scripts` do dicionário foram usados para gerar e higienizar 
+esses arquivos.
+
+
+### Divita-se! :)
