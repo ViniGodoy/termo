@@ -1,5 +1,6 @@
 import pygame
-from pygame import Event, Rect, Surface, Vector2
+from pygame import Rect, Surface, Vector2
+from pygame.event import Event
 
 from dict.wordlist import WordList
 from game.constants import (
